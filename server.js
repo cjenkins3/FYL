@@ -7,7 +7,9 @@ var db = require("./models");
 var app = express();
 var PORT = process.env.PORT || 3000;
 
+
 // Middleware and Static directory
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
@@ -25,6 +27,7 @@ app.use(express.static("public"));
 // Routes
 require("./routes/apiRoutes.js")(app);
 require("./routes/htmlRoutes.js")(app);
+/htmlRoutes")(app);
 
 var syncOptions = { force: false };
 
