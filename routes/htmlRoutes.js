@@ -1,23 +1,31 @@
-var db = require("../models");
+// Dependencies
+// =============================================================
+var path = require("path");
 
+// Routes
+// =============================================================
 module.exports = function(app) {
-  // Load index page
+
+  // Each of the below routes just handles the HTML page that the user gets sent to.
+
+  // index route loads view.html
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
+    res.sendFile(path.join(__dirname, "../views/main.html"));
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
-      });
-    });
+  // add route loads add.html
+  app.get("/add", function(req, res) {
+    res.sendFile(path.join(__dirname, "../views/add.html"));
+  });
+
+  // main route loads main.html
+  app.get("/main", function(req, res) {
+    res.sendFile(path.join(__dirname, "../views/main.html"));
+  });
+
+  // search route loads search.html
+  app.get("/search", function(req, res) {
+    res.sendFile(path.join(__dirname, "../views/search.html"));
   });
 
   // Render 404 page for any unmatched routes

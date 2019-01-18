@@ -1,24 +1,31 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  // Get all goals
+  app.get("/api/goals", function(req, res) {
+    db.Goal.findAll({}).then(function(dbGoal) {
+      res.json(dbGoal);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  // Create a new goal
+  app.post("/api/goals", function(req, res) {
+    db.Goal.create({
+      text: req.body.text,
+      complete: req.body.complete
+    }).then(function(dbGoal) {
+      res.json(dbGoal);
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  // Delete an goal by id
+  app.delete("/api/goals/:id", function(req, res) {
+    db.Goal.destroy({ 
+      where: { 
+      id: req.params.id 
+    } 
+  }).then(function(dbGoal) {
+      res.json(dbGoal);
     });
   });
 };
