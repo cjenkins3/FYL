@@ -1,8 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
-  var Goal = sequelize.define("Goal", {
-    text: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    allowNull: false
+  var goals = sequelize.define("goals", {
+    userID: DataTypes.INTEGER,
+    goalName: DataTypes.STRING,
+    goalType: DataTypes.STRING,
+    goalDescription: DataTypes.STRING,   
+    goalComplete: DataTypes.BOOLEAN,
+    dueDate: DataTypes.DATE
   });
-  return Goal;
+  return goals;
 };

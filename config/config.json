@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": null,
+    "password": "turkey@13",
     "database": "finesse_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "turkey@13",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
