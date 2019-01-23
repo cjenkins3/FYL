@@ -13,7 +13,7 @@ var connection;
     port: 3306,
     host: "localhost",
     user: "root",
-    password: "turkey@13",
+    password: "password@13",
     database: "finesse_db"
   });
 //}
