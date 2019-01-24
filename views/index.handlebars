@@ -1,33 +1,69 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="container">
+  <body class="add-page">
+    <div class="sidenav">
+        <h2>Finesse Your Life</h2>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+        <div class="sidenav-btn">
+            <div class="icon">
+                <h6>"Carpe Diem" - Horace</h6>
+            </div>
+        </div>
+            <div class="icon">
+                <h6>"Our Greates Glory Is Not In Never Falling, But In Rising Every Time We Fall" - Confucius</h6>
+            </div>
+            <div class="icon">
+                <h6>"Don't wish it were easier. Wish you were better" - Jim Rohn</h6>
+            </div>
+        </div>
+    </div>     
+
+        <h5>Welcome to Finesse Your Life. Where you can create and track your goals.</h5>
+
+    <div class="centralized">
+        <div class="container-dashboard">
+            <!-- goals accomplished -->
+            <div class="goals-accomplished">
+                <h3>Goals Accomplished</h3>
+                    <img src="/assets/img/accgoals.png" alt="bar chart img" id="chartOne">
+                        <div class="goal-body">
+                            {{#each goals}}
+                                {{#if removed}}
+                                    {{> goals/goals-removed remove=true}}
+                                {{/if}}
+                            {{/each}}
+                        </div>
+            </div>
+            <!-- current goals -->
+            <div class="current-goals">
+                <h3>Current Goals</h3>
+                    <img src="/assets/img/cgoals.png" alt="bar chart Img" id="chartTwo">
+                    <div class="goal-body">
+                        {{#each goals}}
+                            {{#unless removed}}
+                                {{> goals/goals-block remove=false}}
+                            {{/unless}}
+                        {{/each}}
+                    </div>  
+            </div>
+        </div>
+    </div>
+
+    <div class="add-form centralized">
+        <div class="new-goal">
+            <h2>Add a new goal</h2>
+            <form class="goal-form">
+
+                <input type="text" class="form-control" id="goalName" placeholder="Title">
+                <label class="input-label" for="input1">
+                    Name of Goal.
+                </label>
+                <input type="text" class="form-control" id="todaysDate" placeholder="MM/DD/YYYY">
+                <label class="input-label" for="input2">
+                    Today's Date.
+                </label>
+                <button class="save-btn" type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

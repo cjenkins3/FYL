@@ -1,11 +1,37 @@
-module.exports = function(sequelize, DataTypes) {
-  var goals = sequelize.define("goals", {
-    userID: DataTypes.INTEGER,
-    goalName: DataTypes.STRING,
-    goalType: DataTypes.STRING,
-    goalDescription: DataTypes.STRING,   
-    goalComplete: DataTypes.BOOLEAN,
-    dueDate: DataTypes.DATE
-  });
-  return goals;
+// Import the ORM to create functions that will interact with the database.
+var orm = require("../config/orm.js");
+
+var goal = {
+  //Select all burgers from database.
+  all: function(cb) {
+    orm.all("goals", function(res) {
+      cb(res);
+    });
+  },
+
+  //Create function to create/add a burger.
+  // The variables cols and vals are arrays.
+  create: function(cols, vals, cb) {
+    orm.create("goals", cols, vals, function(res) {
+      cb(res);
+    });
+  },
+
+  //Update function to update burger devoured state.
+  update: function(objColVals, condition, cb) {
+    orm.update("goals", objColVals, condition, function(res) {
+      cb(res);
+    });
+  },
+
+  //Delete function to throw away/delete burger from database.
+  delete: function(condition, cb) {
+    orm.delete("goals", condition, function(res) {
+      cb(res);
+    });
+  }
 };
+
+// Export the database functions for the controller (burgers_controller.js).
+module.exports = goal;
+
