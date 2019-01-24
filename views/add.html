@@ -10,7 +10,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="../public/styles/style.css">
 
-    <!--google fonts-->
+        <!--jQuery-->
+        <script src="https://code.jquery.com/jquery.js"></script>
+        
+            <!--google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
 
 </head>
@@ -36,11 +39,12 @@
                 <a href="#">Calendar</a>
             </div>
         </div>
-    </div>
+    </div>                
+    
     <div class="add-form centralized">
-        <div class="new-job">
+        <div class="new-goal">
             <h2>Add a new goal</h2>
-            <form>
+            <form id="goal-form">
 
                 <div class="dropdown">
                     <select name="position" id="position-dropdown">
@@ -67,11 +71,14 @@
                 </label>
 
 
-                <button class="save-btn">Add</button>
+                <button class="save-btn" type="submit">Add</button>
 
             </form>
         </div>
+
+        <span class="goal-body"></span>
+        
     </div>
-    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="../public/js/index.js"></script>
 </body>
 </html>

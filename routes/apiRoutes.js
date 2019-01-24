@@ -10,6 +10,8 @@ module.exports = function(app) {
 
   // Create a new goal
   app.post("/api/goals", function(req, res) {
+    console.log(req.body);
+
     db.Goal.create({
       text: req.body.text,
       complete: req.body.complete

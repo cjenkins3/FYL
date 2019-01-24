@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": null,
+    "password": "Gobears09",
     "database": "finesse_db",
     "host": "localhost",
     "dialect": "mysql"
