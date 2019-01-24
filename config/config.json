@@ -1,14 +1,18 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "Gobears09",
+=======
+    "password": "turkey@13",
+>>>>>>> a91fd8852bed8dc8e9e00987c65e72038751d6a2
     "database": "finesse_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "turkey@13",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
