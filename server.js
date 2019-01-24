@@ -1,51 +1,33 @@
-// Pull in required dependencies
-// require("dotenv").config();
+//Dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
-var methodOverride = require("method-override");
-// var exphbs = require("express-handlebars");
+
+//Define port the server will be listening on.
+var PORT = process.env.PORT || 3000;
+
 var app = express();
 
+//Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static(__dirname + '/public'));
 
-var port = process.env.PORT || 3000;
-// Middleware and Static directory
-
-app.use(express.json());
-// Serve static content for the app from the 'public' directory
-// Serve static content for the app from the 'public' directory
-app.use(express.static(process.cwd() + "/public"));
+//Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Override with POST having ?_method=DELETE
-app.use(methodOverride("_method"));
+//Parse application/json
+app.use(bodyParser.json());
 
-// // Handlebars -- commented it out just incase
+//Set Handlebars.
+var exphbs = require("express-handlebars");
 
-// app.engine(
-//   "handlebars",
-//   exphbs({
-//     defaultLayout: "main"
-//   })
-// );
-// app.set("view engine", "handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
-// Routes
-var routes = require("./controllers/goals_controller");
-// require("./routes/apiRoutes.js")(app);
-// require("./routes/htmlRoutes.js")(app);
+// Import routes and give the server access to them.
+var routes = require("./controllers/goalsController.js");
 
+app.use(routes);
 
-// If running a test, set syncOptions.force to true
-// clearing the `testdb`
-// if (process.env.NODE_ENV === "test") {
-//   syncOptions.force = true;
-// }
-
-// Starting the server, syncing our models ------------------------------------/
-
-
-module.exports = app;
-
-app.use("/", routes);
-
-app.listen(port);
+//App is listening...
+app.listen(PORT, function() {
+  console.log("App now listening at http://localhost:" + PORT);
+});
