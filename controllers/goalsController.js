@@ -3,10 +3,9 @@ var express = require("express");
 
 var router = express.Router();
 
-// Import the model (burger.js) to use its database functions.
+// Import the model (goal.js) to use its database functions.
 var goal = require("../models/goal.js");
 
-// Create all our routes and set up logic within those routes where required.
 //GET route to get burgers from database.
 router.get("/", function(req, res) {
   goal.all(function(data) {
@@ -18,7 +17,7 @@ router.get("/", function(req, res) {
   });
 });
 
-//POST route to create/add a burger.
+//POST route to create/add a goal.
 router.post("/api/goals", function(req, res) {
   goal.create([
     "goal_name", "removed"
@@ -30,7 +29,7 @@ router.post("/api/goals", function(req, res) {
   });
 });
 
-//PUT route to update burger devoured state.
+//PUT route to update goal removed state.
 router.put("/api/goals/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
@@ -48,7 +47,7 @@ router.put("/api/goals/:id", function(req, res) {
   });
 });
 
-//DELETE route to throw away a burger.
+//DELETE route to throw away a goal.
 router.delete("/api/goals/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 

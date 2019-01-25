@@ -1,4 +1,4 @@
-// Make sure we wait to attach our handlers until the DOM is fully loaded.
+//DOM is fully loaded, attach handlers
 $(function() {
   //Click event for adding a goal.
   $(".goal-form").on("submit", function(event) {
@@ -6,10 +6,10 @@ $(function() {
       event.preventDefault();
 
       //Grab goal name from form field.
-      //When user submits goal name, set removed state to false.
+    
       var newGoal = {
       goal_name: $("#goalName").val().trim(),
-      date: $("#todaysDate").val().trim(),
+      // date: $("#todaysDate").val().trim(),
       removed: 0
       };
 
@@ -42,7 +42,7 @@ $(function() {
       );
     });
 
-  //Click event for "Devour me" button.
+  //Click event for "remove me" button.
   $(".change-remove").on("click", function(event) {
       var id = $(this).data("id");
       var newRemove = $(this).data("newremove");
