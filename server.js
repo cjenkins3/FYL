@@ -1,14 +1,19 @@
 //Dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
-
+var path = require("path");
 //Define port the server will be listening on.
 var PORT = process.env.PORT || 3000;
 
 var app = express();
 
+// app.get("/", function (req, res) {
+//   console.log(req.url);
+//   res.sendFile(path.join(__dirname + "/views/login.html"));
+// });
+
 //Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static(__dirname + '/public'));
+app.use(express.static("public"));
 
 //Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));

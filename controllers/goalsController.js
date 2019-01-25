@@ -6,7 +6,6 @@ var router = express.Router();
 // Import the model (goal.js) to use its database functions.
 var goal = require("../models/goal.js");
 
-// Create all our routes and set up logic within those routes where required.
 //GET route to get burgers from database.
 router.get("/", function(req, res) {
   goal.all(function(data) {
@@ -30,7 +29,7 @@ router.post("/api/goals", function(req, res) {
   });
 });
 
-//PUT route to update goal devoured state.
+//PUT route to update goal removed state.
 router.put("/api/goals/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
